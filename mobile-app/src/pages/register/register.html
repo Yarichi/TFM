@@ -1,0 +1,86 @@
+<!--
+  Generated template for the FormWebuserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Register in the app</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form [formGroup]="registerForm">
+      <ion-grid fixed>
+  
+      <ion-item >
+          <ion-label floating>Alias</ion-label>
+          <ion-input formControlName="alias" type="text"></ion-input>
+      </ion-item>
+      <hr>
+      <ion-item>
+          <ion-label>Role</ion-label>
+          <ion-select formControlName="role">
+            <ion-option value="warrior">Warrior</ion-option>
+            <ion-option value="mage">Mage</ion-option>
+            <ion-option value="rogue">Rogue</ion-option>
+            <ion-option value="necromancer">Necromancer</ion-option>
+            <ion-option value="archer">Archer</ion-option>
+          </ion-select>
+        </ion-item>
+        <hr>
+        <ion-item>
+            <ion-label>Template</ion-label>
+            <ion-select formControlName="type_template">
+              <ion-option value="normal" selected>Normal</ion-option>
+              <ion-option value="pirate">Pirate</ion-option>
+              <ion-option value="astronaut">Astronaut</ion-option>
+            </ion-select>
+          </ion-item>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="mail" type="text"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label floating>Phone number</ion-label>
+            <ion-input formControlName="phone" type="text"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label floating>Telegram Alias</ion-label>
+            <ion-input formControlName="telegramAlias" type="text"></ion-input>
+        </ion-item>
+        
+        <ion-item >
+            <ion-label floating>Password</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>      
+      
+        <ion-row>
+          <ion-col text-center>
+
+            <button ion-button block color="secondary" [disabled]="!registerForm.valid" (click)="onRegister()" >
+                Register as a new user
+            </button>
+  
+          </ion-col>
+        </ion-row>
+      
+        <!-- <ion-row>
+          <ion-col text-center>
+            <button ion-button clear color="dark" (click)="onForgotPassword()">
+              Forgot your password?
+            </button>
+          </ion-col>
+        </ion-row> -->
+  
+      </ion-grid>
+    
+    </form>
+  </ion-content>
+  

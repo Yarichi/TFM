@@ -1,0 +1,26 @@
+<!--
+  Generated template for the MapMissionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <div style="float:left">
+      <ion-title>Start mission</ion-title>
+      <span *ngIf="distance" class="distance">{{distance}} {{unit}}</span>
+    </div>
+    <div [ngStyle]="{'float':'right', 'font-size':'40px', 'color':'#32db64'}"><ion-icon [ngStyle]="{'transform':'rotate('+angle+'deg)'}" name="navigate"></ion-icon></div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <div *ngIf="map" #divMap [ngStyle]="{ 'height': '100%', 'width': '100%', 'background-position': x-position-image + 'px, ' + y-position-image + 'px', 'background-image': 'url(data:image/png;base64,' + map +')'}">
+    <img id="icon-position" #iconPosition src="assets/imgs/location-icon.png" height="32" width="32">
+  </div>
+
+</ion-content>

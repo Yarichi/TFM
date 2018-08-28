@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contact information</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+
+<ion-content padding>
+  <form [formGroup]="contactForm">
+    <ion-grid fixed>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="mail" type="text"[(ngModel)]="user.mail" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Phone number</ion-label>
+          <ion-input formControlName="phone" type="text" [(ngModel)]="user.phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Telegram Alias</ion-label>
+          <ion-input formControlName="telegramAlias" type="text" [(ngModel)]="user.telegramAlias"></ion-input>
+      </ion-item>   
+      <br>
+      <button ion-button block color="secondary"  (click)="onUpdateUser()">
+        Update contact info
+      </button>
+
+    </ion-grid>
+  
+  </form>
+</ion-content>

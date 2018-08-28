@@ -1,0 +1,17 @@
+page-web-users {
+
+}
+ion-content{
+    ion-grid{
+        ion-list{
+            ion-item:hover{background-color:#adcbff;cursor:pointer;}
+        }
+    }
+}
+
+.inline{float:left}
+
+
+.hide {
+    visibility: hidden;
+  }

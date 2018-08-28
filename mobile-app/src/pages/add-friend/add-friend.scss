@@ -1,0 +1,17 @@
+page-add-friend {
+
+}
+ion-content{
+    ion-grid{
+        ion-list{
+            ion-item:hover{background-color:#adcbff;cursor:pointer;}
+        }
+    }
+}
+
+.contact{
+    font-size: 50px;
+    margin-right: 10px;
+}
+
+.inline{float:left}

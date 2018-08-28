@@ -1,0 +1,7 @@
+<ion-tabs id="navTabs" #content swipe-back-enabled="false">
+    <ion-tab tabTitle="Home Page" [root]="homePage" [rootParams]="{'user': navParams.get('user')}"></ion-tab>
+    <ion-tab tabTitle="Web Users Page" [root]="webPage" [rootParams]="{'user': navParams.get('user')}"></ion-tab>
+    <ion-tab tabTitle="App Users Page" [root]="appPage" [rootParams]="user"></ion-tab>
+    <ion-tab tabTitle="Routines Page" [root]="routinePage" [rootParams]="user"></ion-tab>
+    <ion-tab tabTitle="Task Map Page" [root]="taskMapPage" [rootParams]="user"></ion-tab>
+</ion-tabs>

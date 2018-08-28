@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Missions</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+    <ion-grid fixed>
+        <ion-list>	
+            <ion-item *ngFor="let mission of missions" (click)="onInfoMission($event, mission)">
+                <div>
+                    <div class="inline">
+                            <ion-icon large class="contact" name="ios-more" color="yellow" *ngIf="mission.status == 0 && checkTimestamp(mission) == 1"></ion-icon>
+                            <ion-icon large class="contact" name="ios-timer" color="light" *ngIf="mission.status == 0 && checkTimestamp(mission) == 2"></ion-icon>
+                            <ion-icon large class="contact" name="ios-close" color="danger" *ngIf="mission.status == 0 && checkTimestamp(mission) == 3"></ion-icon>
+                            <ion-icon large class="contact" name="ios-checkmark" color="secondary" *ngIf="mission.status == 1"></ion-icon>
+                    </div>
+                        <div>
+                        <div class="inline">
+                            <h2><b>Type: </b>{{mission.type}}</h2>
+                            <p><b>Start date: </b>{{mission.start_date_show}}</p>
+                            <p><b>Final date: </b>{{mission.final_date_show}}</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>	
+    </ion-grid>
+</ion-content>
+

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content class="home" padding *ngIf="user">
+  <div class="selection">
+      <ion-item>
+        <div>
+          <h1 style="margin:auto;"><b>{{user.alias}}</b></h1>
+        </div>
+        <hr>
+        <p><b>Level: </b>{{user.level}}</p>
+        <p><b>Role: </b>{{user.role}}</p>
+        <p><b>Template: </b>{{user.type_template}}</p>
+      </ion-item>
+
+      <ion-item>
+        <h2>Contact information</h2>
+        <p class="mail"><b>Mail: </b>{{user.mail}}</p>
+        <p class="phone-number"><b>Phone number: </b>{{user.phone}}</p>
+        <p class="telegram-alias"><b>Alias Telegram: </b>{{user.telegramAlias}}</p>
+      </ion-item>
+      <br>
+      <ion-buttons right>
+
+        <button  color="primary" (click)="onUpdateUser()" ion-button icon-only>
+            <ion-icon name="ios-brush" ></ion-icon>
+        </button>
+    </ion-buttons>
+  </div>
+</ion-content>

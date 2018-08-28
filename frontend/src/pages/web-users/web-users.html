@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-grid fixed>
+		<ion-buttons fixed right>
+				<button  [navPush]="formWebUser" [navParams]="{'user': undefined}" ion-button icon-only>
+						<ion-icon name="ios-add"></ion-icon>
+				</button>
+		</ion-buttons>
+	</ion-grid>
+	<ion-grid fixed>
+
+		<ion-item>
+			<ion-label floating color="primary" stacked>Search Web User</ion-label>
+			<ion-input type="text" (input)="searchForWebUser($event, searchKey)"></ion-input>
+		</ion-item>
+		<hr>
+		<ion-list>	
+			<ion-item *ngFor="let user of webusers" (click)="selectWebUser($event, user)">
+				<div class="inline">
+					<span class="hide">{{user.userId}}</span>
+					<h2><b>Name: </b>{{user.name}} {{user.lastName}}</h2>
+					<p class="item-mail"><b>mail: </b>{{user.mail}}</p>
+					<p class="item-description"><b>Occupation: </b>{{user.occupation}}</p>
+				</div>
+				<div>
+					<ion-buttons right>
+							<button  color="light" (click)="updateWebUser($event, user);$event.stopPropagation();" ion-button icon-only>
+									<ion-icon name="ios-brush"></ion-icon>
+							</button>
+							<button  color="danger" (click)="deleteWebUser($event, user);$event.stopPropagation();" ion-button icon-only>
+									<ion-icon name="ios-trash"></ion-icon>
+							</button>
+					</ion-buttons>
+				</div>
+			</ion-item>
+		</ion-list>	
+	</ion-grid>
+</ion-content>

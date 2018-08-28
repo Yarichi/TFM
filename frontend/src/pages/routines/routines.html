@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-grid fixed>
+		<ion-buttons right>
+				<button  [navPush]="formRoutine" [navParams]="navParams" ion-button icon-only><!-- or your method, this is for closing a modal -->
+						<ion-icon name="ios-add"></ion-icon>
+				</button>
+		</ion-buttons>
+	</ion-grid>
+	<ion-grid fixed>
+		<ion-item>
+			<ion-label color="primary" stacked>Search Routines</ion-label>
+			<ion-input type="text" (input)="searchForRoutine($event, searchKey)"></ion-input>
+		</ion-item>
+		<hr>
+		<ion-list>	
+			<ion-item *ngFor="let routine of routines" (click)="selectRoutine($event, routine)">
+				<div class="inline">
+					<h2><b>App ser: </b>{{routine.alias_user}}</h2>
+					<p class="creator"><b>Creator: </b>{{routine.creator}}</p>
+					<p class="creator"><b>Date: </b>{{routine.date_routine * 1000 | date: 'dd/MM/yyyy'}}</p>
+				</div>
+				<div>
+					<ion-buttons right>
+							<button  color="light" (click)="updateRoutine($event, routine);$event.stopPropagation();" ion-button icon-only>
+									<ion-icon name="ios-brush"></ion-icon>
+							</button>
+							<button  color="danger" (click)="removeRoutine($event, routine);$event.stopPropagation();" ion-button icon-only>
+									<ion-icon name="ios-trash"></ion-icon>
+							</button>
+					</ion-buttons>
+				</div>
+			</ion-item>		
+		</ion-list>
+	</ion-grid>
+</ion-content>

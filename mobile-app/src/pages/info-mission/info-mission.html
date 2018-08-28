@@ -1,0 +1,38 @@
+<!--
+  Generated template for the InfoMissionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>info-mission</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="selection">
+        <ion-item>
+          <div>
+            <h1 style="margin:auto;"><b>{{mission.type}}</b></h1>
+          </div>
+          <hr>
+          <p><b>Status: </b>{{mission.status}}</p>
+          <p><b>Start date: </b>{{mission.start_date_show}}</p>
+          <p><b>Final date: </b>{{mission.final_date_show}}</p>
+        </ion-item>
+  
+        <ion-item>
+          <p class="text">{{mission.text}}</p>
+        </ion-item>
+        <br>
+        <ion-grid>
+              <button  color="secundary" [disabled]="checkEnable()" (click)="onStartMission()" ion-button icon-only>
+                  Start mission
+              </button>
+        </ion-grid>
+    </div>
+</ion-content>

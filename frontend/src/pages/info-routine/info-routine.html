@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Routine Info Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="home" padding>
+	<div *ngIf="routine" class="selection">
+		<ion-card>
+			<ion-item>
+				<ion-avatar item-left image-large>
+					<img src=""/>
+				</ion-avatar>
+				<h1>{{routine.name}}</h1>
+				<p>{{routine.description}}</p>
+			</ion-item>
+
+			<ion-item>
+				<ion-icon name="document" item-left></ion-icon>
+				<h2>Creator</h2>
+				<p class="creator">{{routine.creator}}</p>
+			</ion-item>
+			<ion-item>
+				<ion-icon name="bookmark" item-left></ion-icon>
+				<h2>Last modification</h2>
+        <h2>User</h2>
+				<p class="mod_name">{{routine.last_mod_name}}</p>
+        <h2>Date</h2>
+				<p class="mod_date">{{routine.last_mod_date}}</p>
+			</ion-item>
+		</ion-card>
+	</div>
+</ion-content>

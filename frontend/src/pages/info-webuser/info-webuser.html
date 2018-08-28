@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>App User Info Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="home" padding>
+	<div *ngIf="user" class="selection">
+		<ion-card>
+			<ion-item>
+				<div>
+					<h1 class="inline" style="margin:auto;"><b>Name: </b>{{user.name}} {{user.lastName}}</h1>
+					<ion-buttons right>
+							<button  [navPush]="formWebUser" [navParams]="navParams" ion-button icon-only>
+									<ion-icon name="ios-brush"></ion-icon>
+							</button>
+							<button  (click)="onRemoveUser()" ion-button icon-only>
+									<ion-icon name="ios-trash"></ion-icon>
+							</button>
+					</ion-buttons>
+				</div>
+				<hr>
+				<p><b>Occupation: </b>{{user.occupation}}</p>
+			</ion-item>
+
+			<ion-item>
+				<h2>Contact information</h2>
+				<p class="mail"><b>Mail: </b>{{user.mail}}</p>
+				<p class="phone-number"><b>Phone number: </b>{{user.phone}}</p>
+				<p class="telegram-alias"><b>Alias Telegram: </b>{{user.telegramAlias}}</p>
+			</ion-item>
+			<ion-item>
+				
+				<h2>System information</h2>
+        <p><b>Last access: </b>{{user.lastAccess}}</p>
+        <p><b>Last action: </b>{{user.lastAction}}</p>
+			</ion-item>
+		</ion-card>
+	</div>
+</ion-content>

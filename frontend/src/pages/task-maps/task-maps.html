@@ -1,0 +1,36 @@
+<!--
+  Generated template for the TaskMapsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>List of task maps</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-grid fixed>
+		<ion-buttons right>
+				<button  ion-button icon-only><!-- or your method, this is for closing a modal -->
+						<ion-icon name="ios-add"></ion-icon>
+				</button>
+		</ion-buttons>
+	</ion-grid>
+	<ion-grid fixed>
+		<ion-list>	
+			<ion-item *ngFor="let task of tasks" (click)="selectTask($event, task)">
+				<div class="inline">
+          <h2><b>{{task.name}}</b></h2>
+          <p *ngFor="let template of task.template_options">
+            {{template}}
+          </p>
+				</div>
+			</ion-item>		
+		</ion-list>
+	</ion-grid>
+</ion-content>

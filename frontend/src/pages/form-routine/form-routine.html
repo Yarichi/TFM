@@ -1,0 +1,140 @@
+<!--
+  Generated template for the FormRoutinePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>form-routine</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="inputForm">
+    <ion-grid fixed>
+        <ion-item >
+            <ion-label floating>Alias app user</ion-label>
+            <ion-input [formControl]="inputForm.controls['alias_user']" type="alias_user"></ion-input>
+        </ion-item>
+
+      <ion-item>
+        <ion-label floating>Creator</ion-label>
+        <ion-input [formControl]="inputForm.controls['creator']" type="creator"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [formControl]="inputForm.controls['date_routine']"></ion-datetime>
+      </ion-item>
+
+      <hr>
+      <ion-list>
+        <ion-item *ngFor="let routine of routines; let i = index">
+          <div class="inline">
+            <p class="type"><b>Type: </b>{{routine.type}}</p>
+            <p class="start"><b>Start hour: </b>{{routine.start_date}}</p>
+            <p class="end"><b>End hour: </b>{{routine.final_date}}</p>
+            <p class="npc"><b>Npc: </b>{{decode(routine.npc_id)}}</p>
+            <p class="room"><b>Room: </b>{{routine.room_id}}</p>
+          </div>
+          <div>
+            <ion-buttons right>
+              <button color="danger" (click)="removeTask($event, i);$event.stopPropagation();" ion-button icon-only>
+                <ion-icon name="ios-trash"></ion-icon>
+              </button>
+            </ion-buttons>
+          </div>
+        </ion-item>
+      </ion-list>
+
+
+      <div class="inline">
+        <p>
+          <b>Tasks</b>
+        </p>
+      </div>
+      <div>
+        <ion-buttons right>
+          <button ion-button icon-only color="light" (click)="showFormTask()" *ngIf="form==false; else hideForm">
+            <ion-icon name="ios-add"></ion-icon>
+          </button>
+          
+          <ng-template #hideForm>
+              <button ion-button icon-only color="danger" (click)="hideFormTask()">
+                  <ion-icon name="ios-close"></ion-icon>
+              </button>
+          </ng-template>
+        </ion-buttons>
+      </div>
+      <ion-grid *ngIf="form == true">
+        <form [formGroup]="taskForm" >
+          <ion-grid fixed>
+            <ion-item>
+              <ion-label>Type of activity</ion-label>
+              <ion-select formControlName="type">
+                <ion-option value="School">School</ion-option>
+                <ion-option value="Visit of medic">Visit of medic</ion-option>
+                <ion-option value="Visit to medic">Visit to medic</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Start hour</ion-label>
+              <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [formControl]="taskForm.controls['start_date']" [(ngModel)]="prueba"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>End hour</ion-label>
+              <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [formControl]="taskForm.controls['final_date']"></ion-datetime>
+            </ion-item>
+
+            
+            <ion-item>
+              <ion-label>NPC</ion-label>
+              <ion-select formControlName="npc_id">
+                <ion-option *ngFor="let user of users" [value]="encode(user.name, user.lastName, user.id, user.telegramAlias)">{{user.name}} {{user.lastName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Floor of structure</ion-label>
+                <ion-select (ionChange)="loadZones($event)">
+                  <ion-option *ngFor="let e of cbf" value={{e}}>{{e}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="zones">
+                <ion-label>Zone for the mission</ion-label>
+                <ion-select formControlName="room_id">
+                  <ion-option *ngFor="let zone of zones" value={{zone.name}}>{{zone.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-row>
+              <ion-col text-center>
+                <button ion-button block color="light" (click)="addTask()">
+                  Add task
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button block color="secondary"  (click)="onUpdateRoutine(routine.id, routine)" *ngIf="routine?.creator;else buttonCreate">
+              Update routine
+          </button>
+          <ng-template #buttonCreate>
+              <button ion-button block color="secondary" [disabled]="!inputForm.valid && !taskForm.valid" (click)="onAddRoutine()" >
+                  Create routine
+              </button>
+          </ng-template>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

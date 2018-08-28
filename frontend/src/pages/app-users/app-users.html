@@ -1,0 +1,32 @@
+<ion-header>
+		<ion-navbar>
+		  
+		</ion-navbar>
+	  </ion-header>
+	  
+	  <ion-content padding>
+		  <ion-grid fixed>
+	  
+			  <ion-item>
+				  <ion-label floating color="primary" stacked>Search App User</ion-label>
+				  <ion-input type="text" (input)="searchForAppUser($event, searchKey)"></ion-input>
+			  </ion-item>
+			  <hr>
+			  <ion-list>	
+				  <ion-item *ngFor="let user of appusers" (click)="selectAppUser($event, user)">
+					  <div class="inline">
+						  <h2><b>Alias: </b>{{user.alias}}</h2>
+						  <p class="item-mail"><b>Mail: </b>{{user.mail}}</p>
+						  <p class="item-description"><b>Phone: </b>{{user.phone}}</p>
+					  </div>
+					  <div>
+						  <ion-buttons right>
+								  <button  color="danger" (click)="removeAppUser($event, user);$event.stopPropagation();" ion-button icon-only>
+										  <ion-icon name="ios-trash"></ion-icon>
+								  </button>
+						  </ion-buttons>
+					  </div>
+				  </ion-item>
+			  </ion-list>	
+		  </ion-grid>
+	  </ion-content>
