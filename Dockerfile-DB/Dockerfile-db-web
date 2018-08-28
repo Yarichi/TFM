@@ -1,0 +1,7 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y mongodb && mkdir /data && mkdir /data/db
+
+RUN mongod --fork --logpath /log && mongo webuser-microservice --eval "db.web_users.insert( {name: \"admin\", password: \"$2y$12$h9FC6oAXxoiZCNpNwVMfJ.ZQy/rKZ4Bj0tR0aOVaDnOEhY395To6e\"} )"
+
+CMD ["mongod", "--logpath", "/log", "--bind_ip", "0.0.0.0" , "--port", "27018"]
