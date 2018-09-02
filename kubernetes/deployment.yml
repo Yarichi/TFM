@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfm
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: tfm
+  template:
+    metadata:
+      labels:
+        app: tfm
+    spec:
+      containers:
+      - name: frontend
+        image: yarichi/tfm-smoreno:tfm-frontend
+        ports:
+        - name: http
+          containerPort: 61000
+      - name: tfm-bot
+        image: yarichi/tfm-smoreno:tfm-bot
+        ports:
+        - name: htpp
+          containerPort: 61001
+      - name: tfm-app
+        image: yarichi/tfm-smoreno:tfm-app
+        ports:
+        - name: http
+          containerPort: 60001
+      - name: tfm-web
+        image: yarichi/tfm-smoreno:tfm-web
+        ports:
+        - name: http
+          containerPort: 60002
+      - name: tfm-routines
+        image: yarichi/tfm-smoreno:tfm-routines
+        ports:
+        - name: http
+          containerPort: 60003
+      - name: tfm-location
+        image: yarichi/tfm-smoreno:tfm-location
+        ports:
+        - name: http
+          containerPort: 60004
+      - name: app-db
+        image: yarichi/smoreno:tfm-app-db
+        ports:
+        - name: http
+          containerPort: 27017
+      - name: web-db
+        image: yarichi/smoreno:tfm-web-db
+        ports:
+        - name: http
+          containerPort: 27018
+      - name: routines-db
+        image: yarichi/smoreno:tfm-routines-db
+        ports:
+        - name: http
+          containerPort: 27019
+      - name: location-db
+        image: yarichi/smoreno:tfm-location-db
+        ports:
+        - name: http
+          containerPort: 27020

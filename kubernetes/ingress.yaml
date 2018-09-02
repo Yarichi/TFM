@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tfm-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: tfm-ip
+spec:
+  rules:
+  - host: tfm.app.com
+    http:
+      paths:
+      - backend:
+          serviceName: tfm-app-service
+          servicePort: 60001
+  - host: tfm.frontend.com
+    http:
+      paths:
+      - backend:
+          serviceName: tfm-frontend-service
+          servicePort: 61000
+  - host: tfm.web.com
+    http:
+      paths:
+      - backend:
+          serviceName: tfm-web-service
+          servicePort: 60002
+  - host: tfm.routines.com
+    http:
+      paths:
+      - backend:
+          serviceName: tfm-routines-service
+          servicePort: 60003
+  - host: tfm.location.com
+    http:
+      paths:
+      - backend:
+          serviceName: tfm-location-service
+          servicePort: 60004
